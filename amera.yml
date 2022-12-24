@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: project
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app: ahmad
+
+
+  template:
+    metadata:
+      name: my-pod
+      labels:
+        app: ahmad
+
+       
+    spec:
+      containers:
+        - image: ameranegm20/webimage
+          name: nginx-container
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "1"
+            requests:
+              memory: "100Mi"
